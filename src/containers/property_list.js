@@ -28,6 +28,9 @@ class PropertyList extends Component {
           {house.parking_type}
         </td>
         <td>
+          <a href={`http://assessments.milwaukee.gov/remast.asp?taxkey=${house.tax_key}`} target='_blank'>Link</a>
+        </td>
+        <td>
           {house.last_assessment_amount}
         </td>
       </tr>
@@ -45,6 +48,7 @@ class PropertyList extends Component {
             <th>Lot Area</th>
             <th>Property Area</th>
             <th>Parking Type</th>
+            <th>Link</th>
             <th>Assessment</th>
           </tr>
         </thead>

@@ -10,7 +10,7 @@ class SearchBar extends Component {
     this.state = {
       term: '', minBedrooms: 1, maxBedrooms: 1, minBathrooms: 1, maxBathrooms: 1,
       latitude: 42.9994092, longitude: -87.9005463, radius: 800,
-      zipcode: "", land_use: "", parking_type: ""
+      zipcode: "", land_use: "", parking_type: "", number_units: ""
     }
     this.onInputChange = this.onInputChange.bind(this)
     this.onFormSubmit = this.onFormSubmit.bind(this)
@@ -39,6 +39,10 @@ class SearchBar extends Component {
           <label className="col-xs-2 col-form-label" htmlFor="maxBathrooms">Max Bath</label>
           <div className="col-xs-2">
             <input id="maxBathrooms" type="number" className="form-control" value={this.state.maxBathrooms} onChange={this.onInputChange} />
+          </div>
+          <label className="col-xs-2 col-form-label" htmlFor="numberUnits">Number of Units</label>
+          <div className="col-xs-2">
+            <input id="numberUnits" type="number" className="form-control" value={this.state.numberUnits} onChange={this.onInputChange} />
           </div>
         </div>
         <div className="form-group row">
