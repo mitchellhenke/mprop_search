@@ -22335,6 +22335,16 @@
 	      return _react2.default.createElement(
 	        'div',
 	        null,
+	        _react2.default.createElement(
+	          'h1',
+	          null,
+	          'Milwaukee Property Search'
+	        ),
+	        _react2.default.createElement(
+	          'p',
+	          null,
+	          'A website that allows filtering by some attributes from Milwaukee\'s Master Property Record'
+	        ),
 	        _react2.default.createElement(_search_bar2.default, null),
 	        _react2.default.createElement(_property_list2.default, null)
 	      );
@@ -22389,7 +22399,7 @@
 	    _this.state = {
 	      term: '', minBedrooms: 1, maxBedrooms: 1, minBathrooms: 1, maxBathrooms: 1,
 	      latitude: 42.9994092, longitude: -87.9005463, radius: 800,
-	      zipcode: "", land_use: "", parking_type: ""
+	      zipcode: "", land_use: "", parking_type: "", number_units: ""
 	    };
 	    _this.onInputChange = _this.onInputChange.bind(_this);
 	    _this.onFormSubmit = _this.onFormSubmit.bind(_this);
@@ -22440,6 +22450,16 @@
 	            'div',
 	            { className: 'col-xs-2' },
 	            _react2.default.createElement('input', { id: 'maxBathrooms', type: 'number', className: 'form-control', value: this.state.maxBathrooms, onChange: this.onInputChange })
+	          ),
+	          _react2.default.createElement(
+	            'label',
+	            { className: 'col-xs-2 col-form-label', htmlFor: 'numberUnits' },
+	            'Number of Units'
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'col-xs-2' },
+	            _react2.default.createElement('input', { id: 'numberUnits', type: 'number', className: 'form-control', value: this.state.numberUnits, onChange: this.onInputChange })
 	          )
 	        ),
 	        _react2.default.createElement(
@@ -22611,12 +22631,12 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var ROOT_URL = 'http://localhost:4000';
+	var ROOT_URL = 'https://salty-beach-73298.herokuapp.com';
 
 	var FETCH_PROPERTIES = exports.FETCH_PROPERTIES = 'FETCH_PROPERTIES';
 
 	function fetchProperties(p) {
-	  var url = ROOT_URL + '?latitude=' + p.latitude + '&longitude=' + p.longitude + '&radius=' + p.radius + '&minBathrooms=' + p.minBathrooms + '&maxBathrooms=' + p.maxBathrooms + '&minBedrooms=' + p.minBedrooms + '&maxBedrooms=' + p.maxBedrooms + '&zipcode=' + p.zipcode + '&land_use=' + p.land_use + '&parking_type=' + p.parking_type;
+	  var url = ROOT_URL + '?latitude=' + p.latitude + '&longitude=' + p.longitude + '&radius=' + p.radius + '&minBathrooms=' + p.minBathrooms + '&maxBathrooms=' + p.maxBathrooms + '&minBedrooms=' + p.minBedrooms + '&maxBedrooms=' + p.maxBedrooms + '&zipcode=' + p.zipcode + '&land_use=' + p.land_use + '&parking_type=' + p.parking_type + '&number_units=' + p.numberUnits;
 	  var request = _axios2.default.get(url);
 
 	  return {
@@ -24048,6 +24068,15 @@
 	        _react2.default.createElement(
 	          'td',
 	          null,
+	          _react2.default.createElement(
+	            'a',
+	            { href: 'http://assessments.milwaukee.gov/remast.asp?taxkey=' + house.tax_key, target: '_blank' },
+	            'Link'
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'td',
+	          null,
 	          house.last_assessment_amount
 	        )
 	      );
@@ -24098,6 +24127,11 @@
 	              'th',
 	              null,
 	              'Parking Type'
+	            ),
+	            _react2.default.createElement(
+	              'th',
+	              null,
+	              'Link'
 	            ),
 	            _react2.default.createElement(
 	              'th',
