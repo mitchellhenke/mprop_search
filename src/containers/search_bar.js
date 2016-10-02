@@ -32,52 +32,52 @@ class SearchBar extends Component {
     return (
       <form onSubmit={this.onFormSubmit} submit>
         <div className="form-group row">
-          <label className="col-xs-2 col-form-label" for="minBathrooms">Min Bath</label>
+          <label className="col-xs-2 col-form-label" htmlhtmlFor="minBathrooms">Min Bath</label>
           <div className="col-xs-2">
             <input id="minBathrooms" type="number" className="form-control" value={this.state.minBathrooms} onChange={this.onInputChange} />
           </div>
-          <label className="col-xs-2 col-form-label" for="maxBathrooms">Max Bath</label>
+          <label className="col-xs-2 col-form-label" htmlFor="maxBathrooms">Max Bath</label>
           <div className="col-xs-2">
             <input id="maxBathrooms" type="number" className="form-control" value={this.state.maxBathrooms} onChange={this.onInputChange} />
           </div>
         </div>
         <div className="form-group row">
-          <label className="col-xs-2 col-form-label" for="minBedrooms">Min Bedrooms</label>
+          <label className="col-xs-2 col-form-label" htmlFor="minBedrooms">Min Bedrooms</label>
           <div className="col-xs-2">
             <input id="minBedrooms" type="number" className="form-control" value={this.state.minBedrooms} onChange={this.onInputChange} />
           </div>
-          <label className="col-xs-2 col-form-label" for="maxBedrooms">Max Bedrooms</label>
+          <label className="col-xs-2 col-form-label" htmlFor="maxBedrooms">Max Bedrooms</label>
           <div className="col-xs-2">
             <input id="maxBedrooms" type="number" className="form-control" value={this.state.maxBedrooms} onChange={this.onInputChange} />
           </div>
         </div>
         <div className="form-group row">
-          <label className="col-xs-2 col-form-label" for="latitude">Latitude</label>
+          <label className="col-xs-2 col-form-label" htmlFor="latitude">Latitude</label>
           <div className="col-xs-2">
             <input id="latitude" type="number" className="form-control" value={this.state.latitude} onChange={this.onInputChange} />
           </div>
-          <label className="col-xs-2 col-form-label" for="longitude">Longitude</label>
+          <label className="col-xs-2 col-form-label" htmlFor="longitude">Longitude</label>
           <div className="col-xs-2">
             <input id="longitude" type="number" className="form-control" value={this.state.longitude} onChange={this.onInputChange} />
           </div>
-          <label className="col-xs-2 col-form-label" for="radius">Radius (m)</label>
+          <label className="col-xs-2 col-form-label" htmlFor="radius">Radius (m)</label>
           <div className="col-xs-2">
             <input id="radius" type="number" className="form-control" value={this.state.radius} onChange={this.onInputChange} />
           </div>
         </div>
         <div className="form-group row">
-          <label className="col-xs-2 col-form-label" for="zipcode">Zipcode</label>
+          <label className="col-xs-2 col-form-label" htmlFor="zipcode">Zipcode</label>
           <div className="col-xs-2">
             <input id="zipcode" type="number" className="form-control" value={this.state.zipcode} onChange={this.onInputChange} />
           </div>
-          <label className="col-xs-2 col-form-label" for="land_use">Land Use</label>
+          <label className="col-xs-2 col-form-label" htmlFor="land_use">Land Use</label>
           <div className="col-xs-2">
             <select id="land_use" className="form-control" value={this.state.land_use} onChange={this.onInputChange}>
               <option value=""></option>
               <option value="8810">Single-Private Households</option>
             </select>
           </div>
-          <label className="col-xs-2 col-form-label" for="land_use">Parking Type</label>
+          <label className="col-xs-2 col-form-label" htmlFor="land_use">Parking Type</label>
           <div className="col-xs-2">
             <select id="parking_type" className="form-control" value={this.state.parking_type} onChange={this.onInputChange}>
               <option value=""></option>
