@@ -22343,7 +22343,12 @@
 	        _react2.default.createElement(
 	          'p',
 	          null,
-	          'A website that allows filtering by some attributes from Milwaukee\'s Master Property Record'
+	          'A website that allows filtering by some attributes from Milwaukee\'s ',
+	          _react2.default.createElement(
+	            'a',
+	            { href: 'http://city.milwaukee.gov/DownloadTabularData3496.htm?docid=3496' },
+	            'Master Property Record'
+	          )
 	        ),
 	        _react2.default.createElement(_search_bar2.default, null),
 	        _react2.default.createElement(_property_list2.default, null)
