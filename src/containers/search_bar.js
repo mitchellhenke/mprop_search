@@ -40,9 +40,9 @@ class SearchBar extends Component {
           <div className="col-xs-2">
             <input id="maxBathrooms" type="number" className="form-control" value={this.state.maxBathrooms} onChange={this.onInputChange} />
           </div>
-          <label className="col-xs-2 col-form-label" htmlFor="numberUnits">Number of Units</label>
+          <label className="col-xs-2 col-form-label" htmlFor="number_units">Number of Units</label>
           <div className="col-xs-2">
-            <input id="numberUnits" type="number" className="form-control" value={this.state.numberUnits} onChange={this.onInputChange} />
+            <input id="number_units" type="number" className="form-control" value={this.state.number_units} onChange={this.onInputChange} />
           </div>
         </div>
         <div className="form-group row">
