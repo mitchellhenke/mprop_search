@@ -1,5 +1,5 @@
 import axios from 'axios';
-const ROOT_URL = 'http://localhost:4000';
+const ROOT_URL = 'https://salty-beach-73298.herokuapp.com';
 
 export const FETCH_PROPERTIES = 'FETCH_PROPERTIES';
 export const FETCH_PROPERTY = 'FETCH_PROPERTY';
