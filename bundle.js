@@ -22423,7 +22423,7 @@
 	          { className: 'form-group row' },
 	          _react2.default.createElement(
 	            'label',
-	            { className: 'col-xs-2 col-form-label', 'for': 'minBathrooms' },
+	            { className: 'col-xs-2 col-form-label', htmlhtmlFor: 'minBathrooms' },
 	            'Min Bath'
 	          ),
 	          _react2.default.createElement(
@@ -22433,7 +22433,7 @@
 	          ),
 	          _react2.default.createElement(
 	            'label',
-	            { className: 'col-xs-2 col-form-label', 'for': 'maxBathrooms' },
+	            { className: 'col-xs-2 col-form-label', htmlFor: 'maxBathrooms' },
 	            'Max Bath'
 	          ),
 	          _react2.default.createElement(
@@ -22447,7 +22447,7 @@
 	          { className: 'form-group row' },
 	          _react2.default.createElement(
 	            'label',
-	            { className: 'col-xs-2 col-form-label', 'for': 'minBedrooms' },
+	            { className: 'col-xs-2 col-form-label', htmlFor: 'minBedrooms' },
 	            'Min Bedrooms'
 	          ),
 	          _react2.default.createElement(
@@ -22457,7 +22457,7 @@
 	          ),
 	          _react2.default.createElement(
 	            'label',
-	            { className: 'col-xs-2 col-form-label', 'for': 'maxBedrooms' },
+	            { className: 'col-xs-2 col-form-label', htmlFor: 'maxBedrooms' },
 	            'Max Bedrooms'
 	          ),
 	          _react2.default.createElement(
@@ -22471,7 +22471,7 @@
 	          { className: 'form-group row' },
 	          _react2.default.createElement(
 	            'label',
-	            { className: 'col-xs-2 col-form-label', 'for': 'latitude' },
+	            { className: 'col-xs-2 col-form-label', htmlFor: 'latitude' },
 	            'Latitude'
 	          ),
 	          _react2.default.createElement(
@@ -22481,7 +22481,7 @@
 	          ),
 	          _react2.default.createElement(
 	            'label',
-	            { className: 'col-xs-2 col-form-label', 'for': 'longitude' },
+	            { className: 'col-xs-2 col-form-label', htmlFor: 'longitude' },
 	            'Longitude'
 	          ),
 	          _react2.default.createElement(
@@ -22491,7 +22491,7 @@
 	          ),
 	          _react2.default.createElement(
 	            'label',
-	            { className: 'col-xs-2 col-form-label', 'for': 'radius' },
+	            { className: 'col-xs-2 col-form-label', htmlFor: 'radius' },
 	            'Radius (m)'
 	          ),
 	          _react2.default.createElement(
@@ -22505,7 +22505,7 @@
 	          { className: 'form-group row' },
 	          _react2.default.createElement(
 	            'label',
-	            { className: 'col-xs-2 col-form-label', 'for': 'zipcode' },
+	            { className: 'col-xs-2 col-form-label', htmlFor: 'zipcode' },
 	            'Zipcode'
 	          ),
 	          _react2.default.createElement(
@@ -22515,7 +22515,7 @@
 	          ),
 	          _react2.default.createElement(
 	            'label',
-	            { className: 'col-xs-2 col-form-label', 'for': 'land_use' },
+	            { className: 'col-xs-2 col-form-label', htmlFor: 'land_use' },
 	            'Land Use'
 	          ),
 	          _react2.default.createElement(
@@ -22534,7 +22534,7 @@
 	          ),
 	          _react2.default.createElement(
 	            'label',
-	            { className: 'col-xs-2 col-form-label', 'for': 'land_use' },
+	            { className: 'col-xs-2 col-form-label', htmlFor: 'land_use' },
 	            'Parking Type'
 	          ),
 	          _react2.default.createElement(
