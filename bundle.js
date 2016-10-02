@@ -22458,13 +22458,13 @@
 	          ),
 	          _react2.default.createElement(
 	            'label',
-	            { className: 'col-xs-2 col-form-label', htmlFor: 'numberUnits' },
+	            { className: 'col-xs-2 col-form-label', htmlFor: 'number_units' },
 	            'Number of Units'
 	          ),
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'col-xs-2' },
-	            _react2.default.createElement('input', { id: 'numberUnits', type: 'number', className: 'form-control', value: this.state.numberUnits, onChange: this.onInputChange })
+	            _react2.default.createElement('input', { id: 'number_units', type: 'number', className: 'form-control', value: this.state.number_units, onChange: this.onInputChange })
 	          )
 	        ),
 	        _react2.default.createElement(
