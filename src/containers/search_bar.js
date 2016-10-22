@@ -16,6 +16,11 @@ class SearchBar extends Component {
     this.onFormSubmit = this.onFormSubmit.bind(this)
   }
 
+  componentWillMount() {
+    this.props.fetchProperties(this.state);
+  }
+
+
   onInputChange(event) {
     this.setState({[event.target.id]: event.target.value}, () => {
       this.props.fetchProperties(this.state)

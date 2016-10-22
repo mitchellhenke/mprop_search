@@ -1,42 +1,45 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router';
 
 class PropertyList extends Component {
-
-  renderProperty(house) {
+  renderProperty(property) {
     return (
-      <tr key={house.id}>
+      <tr key={property.id}>
         <td>
-          {house.tax_key}
+          <Link target="_blank" to={"properties/" + property.id}>
+            {property.tax_key}
+          </Link>
         </td>
         <td>
-          {house.address}
+          {property.address}
         </td>
         <td>
-          {house.bedrooms}
+          {property.bedrooms}
         </td>
         <td>
-          {house.bathrooms}
+          {property.bathrooms}
         </td>
         <td>
-          {house.lot_area}
+          {property.lot_area}
         </td>
         <td>
-          {house.building_area}
+          {property.building_area}
         </td>
         <td>
-          {house.parking_type}
+          {property.parking_type}
         </td>
         <td>
-          <a href={`http://assessments.milwaukee.gov/remast.asp?taxkey=${house.tax_key}`} target='_blank'>Link</a>
+          <a href={`http://assessments.milwaukee.gov/remast.asp?taxkey=${property.tax_key}`} target='_blank'>Link</a>
         </td>
         <td>
-          {house.last_assessment_amount}
+          {property.last_assessment_amount}
         </td>
       </tr>
     );
   }
   render () {
+    console.log(this.props)
     return (
       <table className="table table-hover">
         <thead>
@@ -60,8 +63,8 @@ class PropertyList extends Component {
   }
 }
 
-function mapStateToProps({ properties }) {
-  return { properties };
+function mapStateToProps(state) {
+  return { properties: state.properties.all };
 }
 
 export default connect(mapStateToProps)(PropertyList)
