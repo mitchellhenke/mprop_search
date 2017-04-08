@@ -8,6 +8,53 @@ class PropertyShow extends Component {
     this.props.fetchProperty(this.props.params.id)
   }
 
+  renderSale(sale) {
+    return (
+      <div>
+        <span>{sale.date_time} - ${sale.amount}</span>
+      </div>
+    )
+  }
+
+  renderSales() {
+    const { property } = this.props;
+    if(!property) {
+      return
+    }
+
+    return(
+      <div>
+        <h1>Past Sales</h1>
+        <span>{property.sales.sort((a,b) => a.date_time > b.date_time).map(this.renderSale)}</span>
+      </div>
+    )
+  }
+
+  renderOtherAssessments() {
+    const { property } = this.props;
+    if(!property) {
+      return <div>Loading...</div>
+    }
+
+    return(
+      <div>
+        <h1>Past Assessments</h1>
+        <span>{property.other_assessments.sort((a, b) => a.year > b.year).map(this.renderOtherAssessment)}</span>
+      </div>
+    )
+  }
+
+  renderOtherAssessment(assessment) {
+    return (
+      <div>
+        <Link target="_blank" to={"properties/" + assessment.id}>
+          {assessment.year}
+        </Link>
+        <span>- ${assessment.last_assessment_amount}</span>
+      </div>
+    )
+  }
+
   render() {
     const { property } = this.props;
     if(!property) {
@@ -64,6 +111,14 @@ class PropertyShow extends Component {
         </div>
         <div className="row">
           <img src={"https://maps.googleapis.com/maps/api/streetview?size=600x300&location="+ property.address +"&key=AIzaSyCFjpF6SL7Ea9qcY3va2Vihqdqj6bMhGi8"} />
+        </div>
+        <div className="row">
+          <div className="col-sm-6">
+            {this.renderOtherAssessments()}
+          </div>
+          <div className="col-sm-6">
+            {this.renderSales()}
+          </div>
         </div>
       </div>
     );

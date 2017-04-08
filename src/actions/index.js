@@ -15,7 +15,7 @@ export function fetchProperties(p) {
 }
 
 export function fetchProperty(id) {
-  const url = `${ROOT_URL}/properties/${id}`;
+  const url = `${ROOT_URL}/assessments/${id}`;
   const request = axios.get(url);
 
   return {
