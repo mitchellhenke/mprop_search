@@ -35,67 +35,47 @@ class SearchBar extends Component {
 
   render() {
     return (
-      <form onSubmit={this.onFormSubmit} submit>
-        <div className="form-group row">
-          <label className="col-xs-2 col-form-label" htmlhtmlFor="minBathrooms">Min Bath</label>
-          <div className="col-xs-2">
-            <input id="minBathrooms" type="number" className="form-control" value={this.state.minBathrooms} onChange={this.onInputChange} />
-          </div>
-          <label className="col-xs-2 col-form-label" htmlFor="maxBathrooms">Max Bath</label>
-          <div className="col-xs-2">
-            <input id="maxBathrooms" type="number" className="form-control" value={this.state.maxBathrooms} onChange={this.onInputChange} />
-          </div>
-          <label className="col-xs-2 col-form-label" htmlFor="number_units">Number of Units</label>
-          <div className="col-xs-2">
-            <input id="number_units" type="number" className="form-control" value={this.state.number_units} onChange={this.onInputChange} />
-          </div>
+      <form  onSubmit={this.onFormSubmit} submit>
+        <div className="row mb-2">
+          <label className="col-sm-2 justify-content-start form-control-label" htmlFor="minBathrooms">Min Bath</label>
+          <input id="minBathrooms" type="number" className="form-control col-sm-2" value={this.state.minBathrooms} onChange={this.onInputChange} />
+          <label className="col-sm-2 justify-content-start form-control-label" htmlFor="maxBathrooms">Max Bath</label>
+          <input id="maxBathrooms" type="number" className="form-control col-sm-2" value={this.state.maxBathrooms} onChange={this.onInputChange} />
+          <label className="col-sm-2 justify-content-start form-control-label" htmlFor="number_units">Num Units</label>
+          <input id="number_units" type="number" className="form-control col-sm-2" value={this.state.number_units} onChange={this.onInputChange} />
         </div>
-        <div className="form-group row">
-          <label className="col-xs-2 col-form-label" htmlFor="minBedrooms">Min Bedrooms</label>
-          <div className="col-xs-2">
-            <input id="minBedrooms" type="number" className="form-control" value={this.state.minBedrooms} onChange={this.onInputChange} />
-          </div>
-          <label className="col-xs-2 col-form-label" htmlFor="maxBedrooms">Max Bedrooms</label>
-          <div className="col-xs-2">
-            <input id="maxBedrooms" type="number" className="form-control" value={this.state.maxBedrooms} onChange={this.onInputChange} />
-          </div>
+
+        <div className="row mb-2">
+          <label className="col-sm-2 justify-content-start form-control-label" htmlFor="minBedrooms">Min Beds</label>
+          <input id="minBedrooms" type="number" className="form-control col-sm-2" value={this.state.minBedrooms} onChange={this.onInputChange} />
+          <label className="col-sm-2 justify-content-start form-control-label" htmlFor="maxBedrooms">Max Beds</label>
+          <input id="maxBedrooms" type="number" className="form-control col-sm-2" value={this.state.maxBedrooms} onChange={this.onInputChange} />
         </div>
-        <div className="form-group row">
-          <label className="col-xs-2 col-form-label" htmlFor="latitude">Latitude</label>
-          <div className="col-xs-2">
-            <input id="latitude" type="number" className="form-control" value={this.state.latitude} onChange={this.onInputChange} />
-          </div>
-          <label className="col-xs-2 col-form-label" htmlFor="longitude">Longitude</label>
-          <div className="col-xs-2">
-            <input id="longitude" type="number" className="form-control" value={this.state.longitude} onChange={this.onInputChange} />
-          </div>
-          <label className="col-xs-2 col-form-label" htmlFor="radius">Radius (m)</label>
-          <div className="col-xs-2">
-            <input id="radius" type="number" className="form-control" value={this.state.radius} onChange={this.onInputChange} />
-          </div>
+        <div className="row mb-2">
+          <label className="col-sm-2 justify-content-start form-control-label" htmlFor="latitude">Latitude</label>
+          <input id="latitude" type="number" className="form-control col-sm-2" value={this.state.latitude} onChange={this.onInputChange} />
+          <label className="col-sm-2 justify-content-start form-control-label" htmlFor="longitude">Longitude</label>
+          <input id="longitude" type="number" className="form-control col-sm-2" value={this.state.longitude} onChange={this.onInputChange} />
+          <label className="col-sm-2 justify-content-start form-control-label" htmlFor="radius">Radius (m)</label>
+          <input id="radius" type="number" className="form-control col-sm-2" value={this.state.radius} onChange={this.onInputChange} />
         </div>
-        <div className="form-group row">
-          <label className="col-xs-2 col-form-label" htmlFor="zipcode">Zipcode</label>
-          <div className="col-xs-2">
-            <input id="zipcode" type="number" className="form-control" value={this.state.zipcode} onChange={this.onInputChange} />
-          </div>
-          <label className="col-xs-2 col-form-label" htmlFor="land_use">Land Use</label>
-          <div className="col-xs-2">
-            <select id="land_use" className="form-control" value={this.state.land_use} onChange={this.onInputChange}>
-              <option value=""></option>
-              <option value="8810">Single-Private Households</option>
-            </select>
-          </div>
-          <label className="col-xs-2 col-form-label" htmlFor="land_use">Parking Type</label>
-          <div className="col-xs-2">
-            <select id="parking_type" className="form-control" value={this.state.parking_type} onChange={this.onInputChange}>
-              <option value=""></option>
-              <option value="A">Attached Garage</option>
-              <option value="D">Detached Garage</option>
-              <option value="AD">Attached/Detached Garage</option>
-            </select>
-          </div>
+        <div className="row mb-2">
+          <label className="col-sm-2 justify-content-start form-control-label" htmlFor="zipcode">Zipcode</label>
+          <input id="zipcode" type="number" className="form-control col-sm-2" value={this.state.zipcode} onChange={this.onInputChange} />
+          <label className="col-sm-2 justify-content-start form-control-label" htmlFor="land_use">Land Use</label>
+          <select id="land_use" className="form-control col-sm-2" value={this.state.land_use} onChange={this.onInputChange}>
+            <option value=""></option>
+            <option value="8810">Single-Private Households</option>
+          </select>
+          <label className="col-sm-2 justify-content-start form-control-label" htmlFor="parking_type">Parking</label>
+          <select id="parking_type" className="form-control col-sm-2" value={this.state.parking_type} onChange={this.onInputChange}>
+            <option value=""></option>
+            <option value="A">Attached Garage</option>
+            <option value="D">Detached Garage</option>
+            <option value="AD">Attached/Detached Garage</option>
+          </select>
         </div>
+
         <span className="input-group-btn">
           <button type="submit" className="btn btn-secondary">Submit</button>
         </span>
@@ -104,16 +84,7 @@ class SearchBar extends Component {
   }
 }
 
-function input() {
-  return (
-    <input
-      placeholder="Get a five-day forecast in your favorite cities"
-      className="form-control"
-      value={this.state.term}
-      onChange={this.onInputChange}
-    />
-  )
-}
+
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({ fetchProperties }, dispatch);
