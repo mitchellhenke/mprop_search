@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { fetchProperties } from '../actions/index'
+import Store from './Store'
 
 class SearchBar extends Component {
   constructor(props) {
@@ -10,32 +8,42 @@ class SearchBar extends Component {
     this.state = {
       term: '', minBedrooms: 1, maxBedrooms: 1, minBathrooms: 1, maxBathrooms: 1,
       latitude: 42.9994092, longitude: -87.9005463, radius: 800,
-      zipcode: "", land_use: "", parking_type: "", number_units: ""
+      zipcode: "", land_use: "", parking_type: "", number_units: "",
+      propertiesCallback: this.props.propertiesCallback
     }
     this.onInputChange = this.onInputChange.bind(this)
     this.onFormSubmit = this.onFormSubmit.bind(this)
   }
 
   componentWillMount() {
-    this.props.fetchProperties(this.state);
+    this.fetchProperties();
+  }
+
+  fetchProperties() {
+    const callback = this.state.propertiesCallback;
+    Store.fetchProperties(this.state)
+      .then(function(myJson) {
+        callback(myJson.data);
+        return myJson;
+      })
   }
 
 
   onInputChange(event) {
     this.setState({[event.target.id]: event.target.value}, () => {
-      this.props.fetchProperties(this.state)
+      this.fetchProperties(this.state);
     });
   }
 
   onFormSubmit(event) {
-    this.props.fetchProperties(this.state);
+    // this.props.fetchProperties(this.state);
     // this.setState({term: ''});
     event.preventDefault();
   }
 
   render() {
     return (
-      <form  onSubmit={this.onFormSubmit} submit>
+      <form  onSubmit={this.onFormSubmit}>
         <div className="row mb-2">
           <label className="col-sm-2 justify-content-start form-control-label" htmlFor="minBathrooms">Min Bath</label>
           <input id="minBathrooms" type="number" className="form-control col-sm-2" value={this.state.minBathrooms} onChange={this.onInputChange} />
@@ -84,10 +92,4 @@ class SearchBar extends Component {
   }
 }
 
-
-
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ fetchProperties }, dispatch);
-}
-
-export default connect(null, mapDispatchToProps)(SearchBar);
+export default SearchBar;

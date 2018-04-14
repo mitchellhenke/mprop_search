@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 
 class PropertyList extends Component {
   renderProperty(property) {
     return (
       <tr key={property.id}>
         <td>
-          <Link target="_blank" to={"properties/" + property.id}>
+          {<Link target="_blank" to={"properties/" + property.id}>
             {property.tax_key}
-          </Link>
+          </Link>}
         </td>
         <td>
           {property.address}
@@ -39,7 +38,6 @@ class PropertyList extends Component {
     );
   }
   render () {
-    console.log(this.props)
     return (
       <table className="table table-hover">
         <thead>
@@ -56,15 +54,11 @@ class PropertyList extends Component {
           </tr>
         </thead>
         <tbody>
-          {this.props.properties.map(this.renderProperty)}
+          {this.props.properties.map(this.renderProperty) }
         </tbody>
       </table>
     );
   }
 }
 
-function mapStateToProps(state) {
-  return { properties: state.properties.all };
-}
-
-export default connect(mapStateToProps)(PropertyList)
+export default PropertyList;

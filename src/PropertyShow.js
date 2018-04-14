@@ -1,65 +1,52 @@
 import React, { Component } from 'react';
-import { fetchProperty } from '../actions/index';
-import { Link } from 'react-router';
-import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import Store from './Store'
 
 class PropertyShow extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = { property: null, id: this.props.match.params.id };
+  }
   componentWillMount() {
-    this.props.fetchProperty(this.props.params.id)
+    this.fetchProperty();
   }
 
-  renderSale(sale) {
+  fetchProperty() {
+    Store.fetchProperty(this.state.id)
+      .then(function(myJson) {
+        this.setState({property: myJson})
+      }.bind(this))
+  }
+
+  renderSales(sales) {
+    const sorted = sales.sort((a, b) => { return Date.parse(b.date_time) - Date.parse(a.date_time) })
     return (
-      <div>
-        <span>{sale.date_time} - ${sale.amount}</span>
-      </div>
+      <ul>
+        {sorted.map((sale) => { return (<li key={sale.id}>{`${this.dateFormat(new Date(sale.date_time))}: $${sale.amount}`}</li>) })}
+      </ul>
     )
   }
 
-  renderSales() {
-    const { property } = this.props;
-    if(!property) {
-      return
-    }
-
-    return(
-      <div>
-        <h1>Past Sales</h1>
-        <span>{property.sales.sort((a,b) => a.date_time > b.date_time).map(this.renderSale)}</span>
-      </div>
-    )
-  }
-
-  renderOtherAssessments() {
-    const { property } = this.props;
-    if(!property) {
-      return <div>Loading...</div>
-    }
-
-    return(
-      <div>
-        <h1>Past Assessments</h1>
-        <span>{property.other_assessments.sort((a, b) => a.year > b.year).map(this.renderOtherAssessment)}</span>
-      </div>
-    )
-  }
-
-  renderOtherAssessment(assessment) {
+  renderOtherAssessments(other_assessments) {
+    const sorted = other_assessments.sort((a, b) => { return b.year - a.year })
     return (
-      <div>
-        <Link target="_blank" to={"properties/" + assessment.id}>
-          {assessment.year}
-        </Link>
-        <span>- ${assessment.last_assessment_amount}</span>
-      </div>
+      <ul>
+        {sorted.map((other_assessment) => { return (<li key={other_assessment.id}>{`${other_assessment.year}: $${other_assessment.last_assessment_amount}`}</li>) })}
+      </ul>
     )
+  }
+
+  dateFormat(date) {
+    return `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`
   }
 
   render() {
-    const { property } = this.props;
-    if(!property) {
-      return <div>Loading...</div>
+    if(!this.state.property) {
+      return (<div>Loading...</div>);
     }
+
+    const property = this.state.property;
 
     return (
       <div>
@@ -88,7 +75,7 @@ class PropertyShow extends Component {
         </div>
         <div className="row">
           <div className="col-sm-4">
-            <h4>Air Conditioning:</h4> {property.air_conditioning == '1' ? "Yes" : "No"}
+            <h4>Air Conditioning:</h4> {property.air_conditioning === '1' ? "Yes" : "No"}
           </div>
           <div className="col-sm-4">
             <h4>Attic</h4> {property.attic}
@@ -110,14 +97,16 @@ class PropertyShow extends Component {
           </div>
         </div>
         <div className="row">
-          <img src={"https://maps.googleapis.com/maps/api/streetview?size=600x300&location="+ property.address +"&key=AIzaSyCFjpF6SL7Ea9qcY3va2Vihqdqj6bMhGi8"} />
+          <img alt='house' src={"https://maps.googleapis.com/maps/api/streetview?size=600x300&location="+ property.address +"&key=AIzaSyCFjpF6SL7Ea9qcY3va2Vihqdqj6bMhGi8"} />
         </div>
         <div className="row">
           <div className="col-sm-6">
-            {this.renderOtherAssessments()}
+            <h3>Sales</h3>
+            {this.renderSales(property.sales)}
           </div>
           <div className="col-sm-6">
-            {this.renderSales()}
+            <h3>Assessments</h3>
+            {this.renderOtherAssessments(property.other_assessments)}
           </div>
         </div>
       </div>
@@ -125,8 +114,4 @@ class PropertyShow extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  return { property: state.properties.property };
-}
-
-export default connect(mapStateToProps, { fetchProperty })(PropertyShow)
+export default PropertyShow;
