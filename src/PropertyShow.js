@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Store from './Store'
+import Util from './Util'
 
 class PropertyShow extends Component {
   constructor(props) {
@@ -22,8 +23,8 @@ class PropertyShow extends Component {
   renderSales(sales) {
     const sorted = sales.sort((a, b) => { return Date.parse(b.date_time) - Date.parse(a.date_time) })
     return (
-      <ul>
-        {sorted.map((sale) => { return (<li key={sale.id}>{`${this.dateFormat(new Date(sale.date_time))}: $${sale.amount}`}</li>) })}
+      <ul className="list-group">
+        {sorted.map((sale) => { return (<li className="list-group-item" key={sale.id}>{`${this.dateFormat(new Date(sale.date_time))}: $${Util.numberWithCommas(sale.amount)}`}</li>) })}
       </ul>
     )
   }
@@ -31,8 +32,8 @@ class PropertyShow extends Component {
   renderOtherAssessments(other_assessments) {
     const sorted = other_assessments.sort((a, b) => { return b.year - a.year })
     return (
-      <ul>
-        {sorted.map((other_assessment) => { return (<li key={other_assessment.id}>{`${other_assessment.year}: $${other_assessment.last_assessment_amount}`}</li>) })}
+      <ul className="list-group">
+        {sorted.map((other_assessment) => { return (<li className="list-group-item" key={other_assessment.id}>{`${other_assessment.year}: $${Util.numberWithCommas(other_assessment.last_assessment_amount)}`}</li>) })}
       </ul>
     )
   }
@@ -51,6 +52,7 @@ class PropertyShow extends Component {
     return (
       <div>
         <Link to="/">Back to Search</Link>
+        <hr/>
         <div className="row">
           <div className="col-sm-4">
             <h4>Tax Key:</h4> {property.tax_key}
@@ -62,17 +64,19 @@ class PropertyShow extends Component {
             <h4>Bedrooms:</h4> {property.bedrooms}
           </div>
         </div>
+        <hr/>
         <div className="row">
           <div className="col-sm-4">
             <h4>Bathrooms:</h4> {property.bathrooms}
           </div>
           <div className="col-sm-4">
-            <h4>Lot Area:</h4> {property.lot_area}
+            <h4>Lot Area:</h4> {Util.numberWithCommas(property.lot_area)}
           </div>
           <div className="col-sm-4">
-            <h4>Building Area:</h4> {property.building_area}
+            <h4>Building Area:</h4> {Util.numberWithCommas(property.building_area)}
           </div>
         </div>
+        <hr/>
         <div className="row">
           <div className="col-sm-4">
             <h4>Air Conditioning:</h4> {property.air_conditioning === '1' ? "Yes" : "No"}
@@ -84,6 +88,7 @@ class PropertyShow extends Component {
             <h4>Basement:</h4> {property.basement}
           </div>
         </div>
+        <hr/>
         <div className="row">
           <div className="col-sm-4">
             <h4>Parking Type:</h4> {property.parking_type ? property.parking_type : "None"}
@@ -93,13 +98,15 @@ class PropertyShow extends Component {
             <a href={`http://assessments.milwaukee.gov/remast.asp?taxkey=${property.tax_key}`} target='_blank'>MPROP</a>
           </div>
           <div className="col-sm-4">
-            <h4>Assessment:</h4> ${property.last_assessment_amount}
+            <h4>Assessment:</h4> ${Util.numberWithCommas(property.last_assessment_amount)}
           </div>
         </div>
+        <hr/>
         <div className="row">
-          <img alt='house' src={"https://maps.googleapis.com/maps/api/streetview?size=600x300&location="+ property.address +"&key=AIzaSyCFjpF6SL7Ea9qcY3va2Vihqdqj6bMhGi8"} />
+          <img alt='house' className="mx-auto" src={"https://maps.googleapis.com/maps/api/streetview?size=600x300&location="+ property.address +"&key=AIzaSyCFjpF6SL7Ea9qcY3va2Vihqdqj6bMhGi8"} />
         </div>
-        <div className="row">
+        <hr/>
+        <div className="row text-center">
           <div className="col-sm-6">
             <h3>Sales</h3>
             {this.renderSales(property.sales)}

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import Util from './Util';
 
 class PropertyList extends Component {
   renderProperty(property) {
@@ -20,10 +21,10 @@ class PropertyList extends Component {
           {property.bathrooms}
         </td>
         <td>
-          {property.lot_area}
+          {Util.numberWithCommas(property.lot_area)}
         </td>
         <td>
-          {property.building_area}
+          {Util.numberWithCommas(property.building_area)}
         </td>
         <td>
           {property.parking_type}
@@ -32,14 +33,14 @@ class PropertyList extends Component {
           <a href={`http://assessments.milwaukee.gov/remast.asp?taxkey=${property.tax_key}`} target='_blank'>Link</a>
         </td>
         <td>
-          {property.last_assessment_amount}
+          ${Util.numberWithCommas(property.last_assessment_amount)}
         </td>
       </tr>
     );
   }
   render () {
     return (
-      <table className="table table-hover">
+      <table className="table table-hover mt-2">
         <thead>
           <tr>
             <th>Tax Key</th>
