@@ -9,7 +9,8 @@ class SearchBar extends Component {
       term: '', minBedrooms: 1, maxBedrooms: 1, minBathrooms: 1, maxBathrooms: 1,
       latitude: 42.9994092, longitude: -87.9005463, radius: 800,
       zipcode: "", land_use: "", parking_type: "", number_units: "",
-      propertiesCallback: this.props.propertiesCallback
+      propertiesCallback: this.props.propertiesCallback,
+      textSearch: ""
     }
     this.onInputChange = this.onInputChange.bind(this)
     this.onFormSubmit = this.onFormSubmit.bind(this)
@@ -44,6 +45,11 @@ class SearchBar extends Component {
   render() {
     return (
       <form  onSubmit={this.onFormSubmit}>
+        <div className="row mb-2">
+          <label className="col-sm-2 justify-content-start form-control-label" htmlFor="textSearch">Address Search</label>
+          <input id="textSearch" type="search" className="form-control col-sm-10" value={this.state.textSearch} onChange={this.onInputChange} />
+        </div>
+
         <div className="row mb-2">
           <label className="col-sm-2 justify-content-start form-control-label" htmlFor="minBathrooms">Min Bath</label>
           <input id="minBathrooms" type="number" className="form-control col-sm-2" value={this.state.minBathrooms} onChange={this.onInputChange} />
