@@ -6,8 +6,8 @@ class SearchBar extends Component {
     super(props);
 
     this.state = {
-      term: '', minBedrooms: 1, maxBedrooms: 1, minBathrooms: 1, maxBathrooms: 1,
-      latitude: 42.9994092, longitude: -87.9005463, radius: 800,
+      term: '', minBedrooms: 1, maxBedrooms: 4, minBathrooms: 1, maxBathrooms: 2,
+      latitude: "", longitude: "", radius: "",
       zipcode: "", land_use: "", parking_type: "", number_units: "",
       propertiesCallback: this.props.propertiesCallback,
       textSearch: ""
