@@ -103,7 +103,7 @@ class PropertyShow extends Component {
         </div>
         <hr/>
         <div className="row">
-          <img alt='house' className="mx-auto" src={"https://maps.googleapis.com/maps/api/streetview?size=600x300&location="+ property.address +"&key=AIzaSyCFjpF6SL7Ea9qcY3va2Vihqdqj6bMhGi8"} />
+          <img alt='house' className="mx-auto" src={"https://api.mapbox.com/styles/v1/mapbox/streets-v10/static/geojson(%7B%22type%22%3A%22Point%22%2C%22coordinates%22%3A%5B" + property.longitude + "%2C"+property.latitude+ "%5D%7D)/" + property.longitude+ "," + property.latitude +",14/500x300?access_token=pk.eyJ1IjoibWl0Y2hlbGxoZW5rZSIsImEiOiJjam5ybXN5ZnQwOXpkM3BwYXo3ZDY4aHJzIn0.ktVRbqOVQpj75MqJPZueCA"} />
         </div>
         <hr/>
         <div className="row text-center">

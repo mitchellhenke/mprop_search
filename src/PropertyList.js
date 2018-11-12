@@ -3,7 +3,18 @@ import { Link } from 'react-router-dom';
 import Util from './Util';
 
 class PropertyList extends Component {
-  renderProperty(property) {
+  constructor(props) {
+    super(props);
+
+    this.state = { latLngCallback: this.props.latLngCallback }
+    this.searchNearMeClicked = this.searchNearMeClicked.bind(this)
+  }
+
+  searchNearMeClicked(latitude, longitude) {
+    this.state.latLngCallback(latitude, longitude)
+  }
+
+  renderProperty = (property) => {
     return (
       <tr key={property.id}>
         <td>
@@ -33,6 +44,11 @@ class PropertyList extends Component {
           <a href={`http://assessments.milwaukee.gov/remast.asp?taxkey=${property.tax_key}`} target='_blank'>Link</a>
         </td>
         <td>
+          <span className="input-group-btn">
+            <button className="btn btn-secondary" onClick={() => this.searchNearMeClicked(property.latitude, property.longitude)}>Search Near Me</button>
+          </span>
+        </td>
+        <td>
           ${Util.numberWithCommas(property.last_assessment_amount)}
         </td>
       </tr>
@@ -51,6 +67,7 @@ class PropertyList extends Component {
             <th>Property Area</th>
             <th>Parking Type</th>
             <th>Link</th>
+            <th>Search Near Me</th>
             <th>Assessment</th>
           </tr>
         </thead>

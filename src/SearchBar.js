@@ -7,10 +7,10 @@ class SearchBar extends Component {
 
     this.state = {
       term: '', minBedrooms: 1, maxBedrooms: 4, minBathrooms: 1, maxBathrooms: 2,
-      latitude: "", longitude: "", radius: "",
+      latitude: this.props.latitude, longitude: this.props.longitude, radius: "",
       zipcode: "", land_use: "", parking_type: "", number_units: "",
       propertiesCallback: this.props.propertiesCallback,
-      textSearch: ""
+      textSearch: "", latLngCallback: this.props.latLngCallback
     }
     this.onInputChange = this.onInputChange.bind(this)
     this.onFormSubmit = this.onFormSubmit.bind(this)
@@ -18,6 +18,20 @@ class SearchBar extends Component {
 
   componentWillMount() {
     this.fetchProperties();
+  }
+
+  componentWillReceiveProps(props) {
+    let radius = this.state.radius
+
+    if(props.latitude !== "" && props.longitude !== "" && radius === "") {
+      radius = "500"
+    }
+
+    if(this.state.latitude !== props.latitude || this.state.longitude !== props.longitude || this.state.radius !== radius) {
+      this.setState({latitude: props.latitude, longitude: props.longitude, radius: radius}, () => {
+        this.fetchProperties()
+      })
+    }
   }
 
   fetchProperties() {
@@ -67,9 +81,9 @@ class SearchBar extends Component {
         </div>
         <div className="row mb-2">
           <label className="col-sm-2 justify-content-start form-control-label" htmlFor="latitude">Latitude</label>
-          <input id="latitude" type="number" className="form-control col-sm-2" value={this.state.latitude} onChange={this.onInputChange} />
+          <input id="latitude" type="number" className="form-control col-sm-2" value={this.state.latitude} onChange={(e) => {this.state.latLngCallback(e.target.value, this.state.longitude)}} />
           <label className="col-sm-2 justify-content-start form-control-label" htmlFor="longitude">Longitude</label>
-          <input id="longitude" type="number" className="form-control col-sm-2" value={this.state.longitude} onChange={this.onInputChange} />
+          <input id="longitude" type="number" className="form-control col-sm-2" value={this.state.longitude} onChange={(e) => {this.state.latLngCallback(this.state.latitude, e.target.value)}} />
           <label className="col-sm-2 justify-content-start form-control-label" htmlFor="radius">Radius (m)</label>
           <input id="radius" type="number" className="form-control col-sm-2" value={this.state.radius} onChange={this.onInputChange} />
         </div>
