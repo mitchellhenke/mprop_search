@@ -81,11 +81,11 @@ class SearchBar extends Component {
         </div>
         <div className="row mb-2">
           <label className="col-sm-2 justify-content-start form-control-label" htmlFor="latitude">Latitude</label>
-          <input id="latitude" type="number" className="form-control col-sm-2" value={this.state.latitude} onChange={(e) => {this.state.latLngCallback(e.target.value, this.state.longitude)}} />
+          <input id="latitude" type="number" step="any" className="form-control col-sm-2" value={this.state.latitude} onChange={(e) => {this.state.latLngCallback(e.target.value, this.state.longitude)}} />
           <label className="col-sm-2 justify-content-start form-control-label" htmlFor="longitude">Longitude</label>
-          <input id="longitude" type="number" className="form-control col-sm-2" value={this.state.longitude} onChange={(e) => {this.state.latLngCallback(this.state.latitude, e.target.value)}} />
+          <input id="longitude" type="number" step="any" className="form-control col-sm-2" value={this.state.longitude} onChange={(e) => {this.state.latLngCallback(this.state.latitude, e.target.value)}} />
           <label className="col-sm-2 justify-content-start form-control-label" htmlFor="radius">Radius (m)</label>
-          <input id="radius" type="number" className="form-control col-sm-2" value={this.state.radius} onChange={this.onInputChange} />
+          <input id="radius" type="number" step="1" className="form-control col-sm-2" value={this.state.radius} onChange={this.onInputChange} />
         </div>
         <div className="row mb-2">
           <label className="col-sm-2 justify-content-start form-control-label" htmlFor="zipcode">Zipcode</label>

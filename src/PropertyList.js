@@ -18,7 +18,7 @@ class PropertyList extends Component {
     return (
       <tr key={property.id}>
         <td>
-          {<Link target="_blank" to={"properties/" + property.id}>
+          {<Link target="_blank" rel="noopener noreferrer" to={"properties/" + property.id}>
             {property.tax_key}
           </Link>}
         </td>
@@ -41,7 +41,7 @@ class PropertyList extends Component {
           {property.parking_type}
         </td>
         <td>
-          <a href={`http://assessments.milwaukee.gov/remast.asp?taxkey=${property.tax_key}`} target='_blank'>Link</a>
+          <a href={`http://assessments.milwaukee.gov/remast.asp?taxkey=${property.tax_key}`} rel="noopener noreferrer" target='_blank'>Link</a>
         </td>
         <td>
           <span className="input-group-btn">

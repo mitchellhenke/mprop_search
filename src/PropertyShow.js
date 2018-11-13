@@ -95,7 +95,7 @@ class PropertyShow extends Component {
           </div>
           <div className="col-sm-4">
             <h4>Link</h4>
-            <a href={`http://assessments.milwaukee.gov/remast.asp?taxkey=${property.tax_key}`} target='_blank'>MPROP</a>
+            <a href={`http://assessments.milwaukee.gov/remast.asp?taxkey=${property.tax_key}`} rel="noopener noreferrer" target='_blank'>MPROP</a>
           </div>
           <div className="col-sm-4">
             <h4>Assessment:</h4> ${Util.numberWithCommas(property.last_assessment_amount)}
